@@ -1,3 +1,5 @@
+// All elements stored in variables
+
 const pwEl = document.getElementById("pw");
 const lenEl = document.getElementById("len");
 const upperEl = document.getElementById("upper");
@@ -6,10 +8,14 @@ const numberEl = document.getElementById("number");
 const symbolEl = document.getElementById("symbol");
 const generateEl = document.getElementById("generate");
 
+// Variables for different password character types
+
 const upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerLetters = upperLetters.toLowerCase();
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()_+=";
+
+// Functions to select random characters from each type
 
 function getLowerCase() {
     return lowerLetters[Math.floor(Math.random() * lowerLetters.length)];
@@ -27,6 +33,8 @@ function getSymbol() {
     return symbols[Math.floor(Math.random() * symbols.length)];
 };
 
+// Calls generateX function same number of times as password length
+
 function generatePassword() {
     const len = lenEl.value;
 
@@ -39,6 +47,8 @@ function generatePassword() {
 
     pwEl.innerText = password;
 }
+
+// If checkbox is checked, corresponding characters are pushed into array
 
 function generateX() {
     const xs = [];
@@ -58,10 +68,16 @@ function generateX() {
         xs.push(getSymbol())
     }
 
+    // If no checkboxes are checked, nothing happens
+
     if (xs.length === 0) return "";
+
+    // Randomly shuffles and returns the array of characters
 
     return xs[Math.floor(Math.random() * xs.length)];
 }
+
+// All of the above functions fire up when button is clicked
 
 generateEl.addEventListener("click", generatePassword);
 
